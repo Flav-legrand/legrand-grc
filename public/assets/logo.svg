@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 70" role="img" aria-label="Legrand GRC">
+  <text x="0" y="44" font-family="Segoe UI, Arial, sans-serif" font-size="38" font-weight="700" fill="#0b3d2e">Legrand</text>
+  <text x="2" y="64" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" letter-spacing="4" fill="#c9a227">GRC · SMSI</text>
+  <!-- Carte stylisée de la République du Congo (couleurs du drapeau), à droite du nom -->
+  <defs><clipPath id="cg"><path d="M18.4,12.8 L28,12.8 L40,16.8 L40.8,7.2 L44.8,2.4 L60.8,1.6 L60,14.4 L56,26.4 L53.6,38.4 L43.2,46.4 L41.6,56.8 L34.4,64.8 L27.2,69.6 L16,67.2 L8,70.4 L0.8,61.6 L8,56.8 L12.8,49.6 L23.2,50.4 L27.2,45.6 L28,34.4 L23.2,30.4 L25.6,19.2 Z"/></clipPath></defs>
+  <g transform="translate(196,1) scale(0.94)">
+    <g clip-path="url(#cg)">
+      <polygon points="0,0 57,0 0,65" fill="#009543"/>
+      <polygon points="57,0 69,0 0,79 0,65" fill="#fbde4a"/>
+      <polygon points="69,0 80,0 80,90 0,90 0,79" fill="#dc241f"/>
+    </g>
+    <path d="M18.4,12.8 L28,12.8 L40,16.8 L40.8,7.2 L44.8,2.4 L60.8,1.6 L60,14.4 L56,26.4 L53.6,38.4 L43.2,46.4 L41.6,56.8 L34.4,64.8 L27.2,69.6 L16,67.2 L8,70.4 L0.8,61.6 L8,56.8 L12.8,49.6 L23.2,50.4 L27.2,45.6 L28,34.4 L23.2,30.4 L25.6,19.2 Z" fill="none" stroke="#0b3d2e" stroke-width="1.4" stroke-linejoin="round"/>
+    <circle cx="34.4" cy="64.8" r="2.4" fill="#fff" stroke="#0b3d2e" stroke-width="1"><title>Brazzaville</title></circle>
+  </g>
+</svg>

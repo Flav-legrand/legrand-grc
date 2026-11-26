@@ -1,0 +1,30 @@
+name: CI sécurité
+on: [push, pull_request]
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with: { php-version: '8.3', extensions: pdo_sqlite }
+      - name: Lint PHP
+        run: find . -name "*.php" -print0 | xargs -0 -n1 php -l
+      - name: Tests unitaires
+        run: php tests/run.php
+      - name: Installation de démonstration (SQLite)
+        run: |
+          printf "<?php\n\$c = require __DIR__.'/config.example.php';\n\$c['db_dsn']='sqlite:'.__DIR__.'/../database/ci.sqlite';\nreturn \$c;\n" > config/config.php
+          php database/install.php
+  sast:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Semgrep (OWASP Top 10, PHP)
+        run: pipx run semgrep --config p/php --config p/owasp-top-ten --error .
+  secrets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: gitleaks/gitleaks-action@v2
+        env: { GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}" }

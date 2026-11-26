@@ -1,0 +1,7 @@
+.git
+.github
+config/config.php
+database/*.sqlite
+.env
+tests
+docs

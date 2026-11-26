@@ -1,0 +1,30 @@
+# Démarrage : cp .env.example .env  (puis modifier les mots de passe)
+#             docker compose up -d --build
+#             docker compose exec app php database/install.php
+# Application : http://localhost:8080
+services:
+  app:
+    build: { context: ., dockerfile: docker/Dockerfile }
+    ports: ["127.0.0.1:8080:80"]
+    environment:
+      DB_DSN: "mysql:host=db;port=3306;dbname=legrand_grc;charset=utf8mb4"
+      DB_USER: legrand
+      DB_PASS: ${DB_PASS:?définir DB_PASS dans .env}
+    depends_on:
+      db: { condition: service_healthy }
+    restart: unless-stopped
+  db:
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: legrand_grc
+      MYSQL_USER: legrand
+      MYSQL_PASSWORD: ${DB_PASS:?définir DB_PASS dans .env}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:?définir DB_ROOT_PASSWORD dans .env}
+    volumes: [dbdata:/var/lib/mysql]
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1"]
+      interval: 5s
+      retries: 20
+    restart: unless-stopped
+volumes:
+  dbdata:

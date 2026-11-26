@@ -1,0 +1,4 @@
+config/config.php
+database/*.sqlite
+.env
+vendor/
